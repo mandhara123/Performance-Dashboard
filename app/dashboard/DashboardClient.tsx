@@ -89,9 +89,10 @@ export default function DashboardClient({ initialData }: DashboardClientProps) {
   // Performance monitoring handlers
   const handleDataPointCountChange = useCallback((count: number) => {
     setDataPointCount(count);
-    // Generate new data set with the specified count
+    // Generate new data set with the specified count (with safety limit)
+    const safeCount = Math.min(count, 10000); // Limit to 10k for performance
     actions.clearData();
-    actions.generateTestData(count);
+    actions.generateTestData(safeCount);
   }, [actions]);
 
   const handleUpdateFrequencyChange = useCallback((frequency: number) => {

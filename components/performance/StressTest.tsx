@@ -89,6 +89,7 @@ export function StressTest({
   const stopTest = useCallback((reason: 'manual' | 'fps_failure' | 'memory_failure' | 'completed') => {
     if (testIntervalRef.current) {
       clearInterval(testIntervalRef.current);
+      testIntervalRef.current = undefined;
     }
     
     setTestPhase(reason === 'completed' ? 'completed' : 'failed');
@@ -102,9 +103,14 @@ export function StressTest({
       setMaxSustainableLoad(maxLoad);
     }
     
+    // Reset data points to normal level after test
+    setTimeout(() => {
+      onDataPointChange(1000); // Reset to safe level
+    }, 1000);
+    
     onStressTestComplete(testResults);
     onStop();
-  }, [testResults, currentDataPoints, onStressTestComplete, onStop]);
+  }, [testResults, currentDataPoints, onStressTestComplete, onStop, onDataPointChange]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -157,7 +163,14 @@ export function StressTest({
     return () => {
       if (testIntervalRef.current) {
         clearInterval(testIntervalRef.current);
+        testIntervalRef.current = undefined;
       }
+      // Reset to safe state on cleanup
+      setTestResults([]);
+      setCurrentDataPoints(1000);
+      setTestPhase('initializing');
+      setTestProgress(0);
+      consecutiveLowFpsRef.current = 0;
     };
   }, [isRunning, recordTestResult, checkPerformanceThresholds, stopTest, onDataPointChange]);
 
