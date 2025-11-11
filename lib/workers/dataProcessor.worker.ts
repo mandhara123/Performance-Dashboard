@@ -1,5 +1,7 @@
 // Web Worker for heavy data processing
-self.onmessage = function(e) {
+import { DataPoint } from '../types';
+
+self.onmessage = function(e: MessageEvent) {
   const { type, data } = e.data;
 
   switch (type) {
@@ -23,8 +25,8 @@ self.onmessage = function(e) {
   }
 };
 
-function processLargeDataset(rawData) {
-  const processed = [];
+function processLargeDataset(rawData: any[]): any[] {
+  const processed: any[] = [];
   const batchSize = 1000;
   
   for (let i = 0; i < rawData.length; i += batchSize) {
@@ -52,9 +54,9 @@ function processLargeDataset(rawData) {
   return processed;
 }
 
-function aggregateDataPoints(points, intervalMs) {
-  const aggregated = [];
-  const buckets = new Map();
+function aggregateDataPoints(points: any[], intervalMs: number): any[] {
+  const aggregated: any[] = [];
+  const buckets = new Map<number, any>();
   
   points.forEach(point => {
     const bucketTime = Math.floor(point.timestamp / intervalMs) * intervalMs;
@@ -87,7 +89,7 @@ function aggregateDataPoints(points, intervalMs) {
   return aggregated.sort((a, b) => a.timestamp - b.timestamp);
 }
 
-function filterDataByRange(points, range) {
+function filterDataByRange(points: any[], range: any): any[] {
   return points.filter(point => 
     point.timestamp >= range.start && 
     point.timestamp <= range.end &&
@@ -96,7 +98,7 @@ function filterDataByRange(points, range) {
   );
 }
 
-function calculateMovingAverage(data, index, window) {
+function calculateMovingAverage(data: any[], index: number, window: number): number {
   const start = Math.max(0, index - window + 1);
   const end = index + 1;
   const slice = data.slice(start, end);
@@ -104,7 +106,7 @@ function calculateMovingAverage(data, index, window) {
   return sum / slice.length;
 }
 
-function calculateTrend(data, index, window) {
+function calculateTrend(data: any[], index: number, window: number): number {
   if (index < window) return 0;
   
   const start = index - window;
@@ -114,7 +116,7 @@ function calculateTrend(data, index, window) {
   return ((current - previous) / previous) * 100;
 }
 
-function calculateVolatility(data, index, window) {
+function calculateVolatility(data: any[], index: number, window: number): number {
   const start = Math.max(0, index - window + 1);
   const end = index + 1;
   const slice = data.slice(start, end);
