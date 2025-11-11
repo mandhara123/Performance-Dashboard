@@ -26,11 +26,13 @@ export default function EnhancedDashboardClient() {
   
   const dashboardRef = useRef<HTMLDivElement>(null);
   
-  const { data, isStreaming, startStream, stopStream, error } = useDataStream({
-    initialCount: dataCount,
+  const { data, isStreaming, actions } = useDataStream({
     updateInterval,
-    maxPoints: 50000,
+    maxDataPoints: 50000,
+    enableRealtime: true,
   });
+  
+  const { startStreaming, stopStreaming } = actions;
 
   const {
     metrics,
@@ -171,7 +173,7 @@ export default function EnhancedDashboardClient() {
 
               {/* Streaming Control */}
               <button
-                onClick={isStreaming ? stopStream : startStream}
+                onClick={isStreaming ? stopStreaming : startStreaming}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   isStreaming
                     ? 'bg-red-500 text-white hover:bg-red-600'
@@ -263,14 +265,14 @@ export default function EnhancedDashboardClient() {
               </div>
             </div>
 
-            {error ? (
-              <div className="text-red-500 p-8 text-center">
-                <p>Error loading data: {error}</p>
+            {data.length === 0 ? (
+              <div className="text-yellow-600 p-8 text-center">
+                <p>Loading data...</p>
                 <button
-                  onClick={startStream}
-                  className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={startStreaming}
+                  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 >
-                  Retry
+                  Start Streaming
                 </button>
               </div>
             ) : (
@@ -279,7 +281,6 @@ export default function EnhancedDashboardClient() {
                   data={data}
                   width={800}
                   height={384}
-                  margin={{ top: 20, right: 30, bottom: 40, left: 50 }}
                 />
                 
                 {/* Loading Overlay */}
