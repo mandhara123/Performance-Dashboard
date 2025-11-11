@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { LineChart } from '@/components/charts/LineChart';
-import { BarChart } from '@/components/charts/BarChart';
-import { ScatterPlot } from '@/components/charts/ScatterPlot';
-import { Heatmap } from '@/components/charts/Heatmap';
+import LineChart from '@/components/charts/LineChart';
+import BarChart from '@/components/charts/BarChart';
+import ScatterPlot from '@/components/charts/ScatterPlot';
+import Heatmap from '@/components/charts/Heatmap';
 import { PerformancePanel } from '@/components/performance/PerformancePanel';
 import { ParticleSystem, GlowEffect } from '@/components/effects/VisualEffects';
 import { useDataStream } from '@/hooks/useDataStream';
