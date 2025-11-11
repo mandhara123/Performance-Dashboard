@@ -101,6 +101,7 @@ export function useDataStream({
   const startStreaming = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      intervalRef.current = undefined;
     }
 
     setIsStreaming(true);

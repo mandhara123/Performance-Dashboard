@@ -102,16 +102,34 @@ export default function DashboardClient({ initialData }: DashboardClientProps) {
 
   const handleStressTestToggle = useCallback((enabled: boolean) => {
     setIsStressTesting(enabled);
-    if (!enabled) {
+    
+    if (enabled) {
+      // Stop normal streaming during stress test
+      actions.stopStreaming();
+    } else {
       // Reset to normal settings when stopping stress test
-      handleDataPointCountChange(5000);
+      actions.stopStreaming(); // Ensure any test intervals are cleared
+      handleDataPointCountChange(1000); // Reset to smaller, safer dataset
       handleUpdateFrequencyChange(200);
+      
+      // Restart normal streaming after a brief delay
+      setTimeout(() => {
+        actions.startStreaming();
+      }, 500);
     }
-  }, [handleDataPointCountChange, handleUpdateFrequencyChange]);
+  }, [actions, handleDataPointCountChange, handleUpdateFrequencyChange]);
 
   const handleStressTestComplete = useCallback((results: any[]) => {
     setStressTestResults(results);
-  }, []);
+    setIsStressTesting(false);
+    
+    // Ensure clean state after stress test
+    actions.stopStreaming();
+    setTimeout(() => {
+      handleDataPointCountChange(1000);
+      actions.startStreaming();
+    }, 1000);
+  }, [actions, handleDataPointCountChange]);
 
   return (
     <div className="container mx-auto px-4 py-6 relative">
@@ -245,7 +263,7 @@ export default function DashboardClient({ initialData }: DashboardClientProps) {
             isRunning={isStressTesting}
             onStressTestComplete={handleStressTestComplete}
             onDataPointChange={handleDataPointCountChange}
-            onStop={() => setIsStressTesting(false)}
+            onStop={() => handleStressTestToggle(false)}
             currentFps={currentFps}
             currentMemory={currentMemory}
           />
