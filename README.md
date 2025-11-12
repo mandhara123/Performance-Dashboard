@@ -2,15 +2,15 @@
 
 A cutting-edge performance dashboard built with Next.js 14+ that smoothly renders and updates 10,000+ data points at 60fps using custom canvas-based rendering and advanced optimization techniques.
 
-## 🚀 Live Demo Features
+##  Live Demo Features
 
-### ✅ Required Demo Components
+###  Required Demo Components
 - **Real-time FPS Counter** with performance color coding (Green >50fps, Yellow 30-50fps, Red <30fps)
 - **Memory Usage Monitor** with heap tracking and trend indicators
 - **Interactive Data Controls** with sliders for 1k-50k data points and update frequency
 - **Stress Test Mode** that automatically finds performance limits
 
-### ✅ Bonus Features Implemented
+###  Bonus Features Implemented
 - **Web Workers** for background data processing
 - **OffscreenCanvas** capabilities for background rendering
 - **Comprehensive Performance Reports** with optimization recommendations
@@ -18,7 +18,7 @@ A cutting-edge performance dashboard built with Next.js 14+ that smoothly render
 
 ![Dashboard Preview](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Performance+Dashboard+Preview)
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Install dependencies
@@ -36,15 +36,15 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-## ✨ Features
+##  Features
 
-### 📊 **Multiple Chart Types**
+###  **Multiple Chart Types**
 - **Line Charts** - Real-time time series data with multiple categories
 - **Bar Charts** - Aggregated data visualization with interactive tooltips
 - **Scatter Plots** - Multi-dimensional data exploration with zoom/pan
 - **Heatmaps** - Time-based categorical data analysis with color coding
 
-### ⚡ **Performance Optimized**
+###  **Performance Optimized**
 - **60 FPS** rendering with 10,000+ data points
 - **< 100ms** response time for all interactions
 - **Memory efficient** - no memory leaks during extended use
@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 - **Performance Graphs** - Historical performance trends
 - **Stress Testing** - Built-in performance stress tests
 
-## 🏗️ Architecture
+##  Architecture
 
 ### **Next.js 14 App Router**
 ```
@@ -107,7 +107,7 @@ hooks/
 └── useVirtualization.ts   # Virtual scrolling logic
 ```
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Frontend**: Next.js 14 with App Router
 - **Language**: TypeScript with strict type checking
@@ -117,17 +117,17 @@ hooks/
 - **Data Streaming**: Server-Sent Events (SSE)
 - **Performance**: Custom optimization patterns
 
-## 🎯 Performance Targets
+##  Performance Targets
 
 | Metric | Target | Achieved |
 |--------|--------|----------|
-| Frame Rate | 60 FPS | ✅ 60 FPS |
-| Data Points | 10,000+ | ✅ 15,000+ |
-| Response Time | < 100ms | ✅ < 50ms |
-| Memory Leaks | None | ✅ Stable |
-| Update Rate | 100ms | ✅ 100ms |
+| Frame Rate | 60 FPS |  60 FPS |
+| Data Points | 10,000+ |  15,000+ |
+| Response Time | < 100ms |  < 50ms |
+| Memory Leaks | None |  Stable |
+| Update Rate | 100ms |  100ms |
 
-## 📱 Browser Compatibility
+##  Browser Compatibility
 
 - **Chrome** 90+ (Recommended)
 - **Firefox** 88+
@@ -136,7 +136,7 @@ hooks/
 
 *Note: Performance is optimal in Chrome due to Canvas optimizations*
 
-## 🔧 Development
+##  Development
 
 ### **Project Structure**
 The project follows Next.js 14 App Router conventions with clear separation between Server and Client Components:
@@ -158,7 +158,7 @@ The project follows Next.js 14 App Router conventions with clear separation betw
 - **Prettier** - Automated code formatting
 - **Performance Monitoring** - Built-in metrics and optimization suggestions
 
-## 🚀 Deployment
+##  Deployment
 
 ### **Vercel (Recommended)**
 ```bash
@@ -193,7 +193,7 @@ NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true
 
 See [PERFORMANCE.md](./PERFORMANCE.md) for detailed performance analysis, benchmarks, and optimization techniques.
 
-## 🤝 Contributing
+##  Contributing
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -211,7 +211,7 @@ See [PERFORMANCE.md](./PERFORMANCE.md) for detailed performance analysis, benchm
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Next.js Team** - For the amazing App Router architecture
 - **React Team** - For concurrent features and performance optimizations
