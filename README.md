@@ -16,7 +16,6 @@ A cutting-edge performance dashboard built with Next.js 14+ that smoothly render
 - **Comprehensive Performance Reports** with optimization recommendations
 - **PWA Support** with offline capabilities
 
-![Dashboard Preview](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Performance+Dashboard+Preview)
 
 ##  Quick Start
 
@@ -51,14 +50,14 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 - **Real-time updates** every 100ms without frame drops
 - **Virtual scrolling** for large datasets in tables
 
-### 🎛️ **Interactive Controls**
+###  **Interactive Controls**
 - **Advanced Filtering** - Filter by categories, value ranges, and time periods
 - **Time Range Selection** - Preset ranges (5min, 1hr, 24hr) or custom selection
 - **Data Aggregation** - Group by time periods with various methods (avg, sum, min, max)
 - **Zoom & Pan** - Smooth chart interactions with mouse wheel and drag
 - **Real-time Streaming** - Toggle live data updates on/off
 
-### 📈 **Performance Monitoring**
+###  **Performance Monitoring**
 - **FPS Counter** - Real-time frame rate monitoring
 - **Memory Usage** - JavaScript heap size tracking
 - **Render Time** - Per-frame rendering performance metrics
@@ -189,7 +188,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true
 ```
 
-## 📊 Performance Analysis
+##  Performance Analysis
 
 See [PERFORMANCE.md](./PERFORMANCE.md) for detailed performance analysis, benchmarks, and optimization techniques.
 
@@ -207,7 +206,7 @@ See [PERFORMANCE.md](./PERFORMANCE.md) for detailed performance analysis, benchm
 - Add performance tests for new features
 - Update documentation for API changes
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
